@@ -2,7 +2,6 @@
 
 
 def call(String MANIFESTS_URL = 'ssh://git@stash.mgcorp.co:7999/lt/deployment-manifests.git') {
-
     checkout(
         [$class: 'GitSCM',
         branches: [[name: "*/master"]],
