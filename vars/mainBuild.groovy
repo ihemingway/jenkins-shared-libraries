@@ -8,22 +8,22 @@ def call(Map args) {
                 label 'slave'
                 namespace 'jenkins'
                 defaultContainer 'primary'
-                yaml '''
+                yaml """
 apiVersion: v1
 kind: Pod
 metadata:
-name: slave
-labels:
   name: slave
+  labels:
+    name: slave
 spec:
-activeDeadlineSeconds: 600
-containers:
-- name: primary
-  image: harbor.mgcorp.co/devops/primarybuild
-  command:
-  - cat
-  tty: true
-    '''
+  activeDeadlineSeconds: 600
+  containers:
+  - name: primary
+    image: harbor.mgcorp.co/devops/primarybuild
+    command:
+    - cat
+    tty: true
+"""
             }
         }
         environment {
