@@ -14,15 +14,15 @@ kind: Pod
 metadata:
 name: slave
 labels:
-    name: slave
+  name: slave
 spec:
 activeDeadlineSeconds: 600
 containers:
 - name: primary
-    image: harbor.mgcorp.co/devops/primarybuild
-    command:
-    - cat
-    tty: true
+  image: harbor.mgcorp.co/devops/primarybuild
+  command:
+  - cat
+  tty: true
     '''
             }
         }
