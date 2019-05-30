@@ -4,10 +4,10 @@
 def call(Map args) {
     checkout(
         [$class: 'GitSCM',
-        branches: [[name: "${args.branch}"]],
+        branches: [[name: "${env.BRANCH}"]],
         doGenerateSubmoduleConfigurations: false,
         extensions: [[$class: 'CloneOption', noTags: false,  shallow: false]],
-        userRemoteConfigs: [[credentialsId: 'StashKey', url: "${args.codeurl}"]]
+        userRemoteConfigs: [[credentialsId: 'StashKey', url: "${env.CODE_URL}"]]
         ]
     )
 }
