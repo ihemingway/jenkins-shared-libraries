@@ -10,4 +10,7 @@ def call(String cicadaurl = 'https://stash.mgcorp.co/scm/lt/cicada.git') {
         userRemoteConfigs: [[credentialsId: 'StashKey', url: "${cicadaurl}"]]
         ]
     )
+    sh (
+        "pip3 install ."
+    )
 }
