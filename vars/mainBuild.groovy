@@ -6,6 +6,7 @@ def call(Map args) {
         agent {
             kubernetes {
                 label 'slave'
+                cloud 'kubernetes-prod'
                 namespace 'jenkins'
                 defaultContainer 'primary'
                 yaml """
