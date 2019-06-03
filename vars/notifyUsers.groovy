@@ -2,9 +2,6 @@
 import java.text.SimpleDateFormat
 
 def call(Map args) {
-    wrap([$class: 'BuildUser']) {
-        def user = env.BUILD_USER_ID
-        }
     def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
     def emails = data?.get(env.ENVIRONMENT)."notifyemails"
     String stringEmails = emails.join(", ")
@@ -20,7 +17,7 @@ def call(Map args) {
         webhookUrl: "https://outlook.office.com/webhook/ea64b24e-111b-4b31-b1c4-ed67ce8c9ef4@8901d9c6-8b0c-4459-8f7a-df56f23ef9f9/JenkinsCI/24f71ab16f7f4f63a08b76b45c5ab4e0/acc9e43c-a995-47e2-b550-5a5aa2568437",
         status: "${args.status}"
         )
-
+    wrap([$class: 'BuildUser']) {
     emailext(
         mimeType: 'text/html',
         subject: "{$env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}!",
@@ -167,7 +164,7 @@ def call(Map args) {
                                                             <span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed Date:</strong> 2019-06-03 09:59:17</span>
                                                         </font>
                                                     </li>
-                                                    <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed By:</strong>${user}</span></font></li>
+                                                    <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed By:</strong>${env.BUILD_USER_ID}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Project Affected:</strong>${productname}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Environment Affected:</strong> ${env.ENVIRONMENT}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">VCS Related:</strong> ${env.REPO} - [Branch or Tag] ${env.BRANCH}</span></font></li>
@@ -202,4 +199,5 @@ def call(Map args) {
 
 """
         )
+    }
 }
