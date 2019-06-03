@@ -163,7 +163,7 @@ def call(Map args) {
                                                 <ul>
                                                     <li style="color: rgb(96, 96, 96);">
                                                         <font color="#666666" face="Arial, Helvetica, sans-serif">
-                                                            <span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed Date:</strong> 2019-06-03 09:59:17</span>
+                                                            <span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed Date:</strong> ${curdate}</span>
                                                         </font>
                                                     </li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed By:</strong> ${env.BUILD_USER_ID}</span></font></li>
@@ -171,7 +171,7 @@ def call(Map args) {
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Environment Affected:</strong> ${env.ENVIRONMENT}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">VCS Related:</strong> ${env.REPO} - [Branch/Tag: ${env.BRANCH}]</span></font></li>
 
-                                                                                                            <li style="color: rgb(96, 96, 96);"><font color="#${args.color}" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: #${args.color}; line-height: 130%;">Deployment status:<strong style="color: #${args.color};"> ${args.status}!</strong></span></font></li>
+                                                                                                            <li style="color: rgb(96, 96, 96);">Deployment status:<font color="#${args.color}" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: #${args.color}; line-height: 130%;"><strong style="color: #${args.color};"> ${args.status}!</strong></span></font></li>
                                                                                                     </ul>
 
                                                 <h2 style="color: rgb(96, 96, 96); display: block; font-size: 24px; font-weight: bold; margin: 18px 0px; font-family: 'Times New Roman'; text-align: left; border: 0px none rgb(96, 96, 96); border-radius: 0px; outline: rgb(96, 96, 96) none 0px; padding: 0px; vertical-align: baseline; word-wrap: break-word; text-decoration: none; background-image: none; background-color: rgba(0, 0, 0, 0); background-position: 0% 0%; background-repeat: repeat;"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><span style="font-size: 16px; color: rgb(96, 96, 96); line-height: 130%;">Affected Servers:</span><br></span></font></h2>
