@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 
-def call(String MANIFESTS_URL = 'ssh://git@stash.mgcorp.co:7999/lt/deployment-manifests.git') {
+def call(Map args, String MANIFESTS_URL = 'ssh://git@stash.mgcorp.co:7999/lt/deployment-manifests.git') {
     checkout(
         [$class: 'GitSCM',
         branches: [[name: "*/master"]],
@@ -10,4 +10,6 @@ def call(String MANIFESTS_URL = 'ssh://git@stash.mgcorp.co:7999/lt/deployment-ma
         userRemoteConfigs: [[credentialsId: 'StashKey', url: "${MANIFESTS_URL}"]]
         ]
     )
+    def yaml = readYaml file: "${args.projprod}/deployconfig.conf"
+    emails = yaml.${args.environment}.notify
 }
