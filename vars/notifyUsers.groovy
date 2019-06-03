@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+import java.text.SimpleDateFormat
 
 def call(Map args) {
     def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
