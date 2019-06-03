@@ -10,6 +10,4 @@ def call(Map args, String MANIFESTS_URL = 'ssh://git@stash.mgcorp.co:7999/lt/dep
         userRemoteConfigs: [[credentialsId: 'StashKey', url: "${MANIFESTS_URL}"]]
         ]
     )
-    def yaml = readYaml file: "${args.projprod}/deployconfig.conf"
-    env.EMAILS = yaml.(args.environment).notify
 }
