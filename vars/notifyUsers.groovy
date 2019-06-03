@@ -19,6 +19,7 @@ def call(Map args) {
         )
 
     emailext(
+        mimeType: 'text/html',
         subject: "{$env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}!",
         to: "${stringEmails}",
         body: """
