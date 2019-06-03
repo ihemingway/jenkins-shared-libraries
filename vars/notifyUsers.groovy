@@ -9,18 +9,20 @@ def call(Map args) {
     String stringTargets = targets.join("\n")
     def productname = data?."staticvars"."productname"
     def date = new Date()
-    sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+    sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss Z", Locale.getDefault())
     def curdate = sdf.format(date)
+
     office365ConnectorSend (
         color: "${args.color}",
         message: "${args.status} Branch/Tag: ${env.BRANCH} :: Environment: ${env.ENVIRONMENT} :: Repo: ${env.CODE_URL}",
         webhookUrl: "https://outlook.office.com/webhook/ea64b24e-111b-4b31-b1c4-ed67ce8c9ef4@8901d9c6-8b0c-4459-8f7a-df56f23ef9f9/JenkinsCI/24f71ab16f7f4f63a08b76b45c5ab4e0/acc9e43c-a995-47e2-b550-5a5aa2568437",
         status: "${args.status}"
         )
+
     wrap([$class: 'BuildUser']) {
     emailext(
         mimeType: 'text/html',
-        subject: "{$env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}!",
+        subject: "${productname} :: ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}!",
         to: "${stringEmails}",
         body: """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
