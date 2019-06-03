@@ -11,5 +11,5 @@ def call(Map args, String MANIFESTS_URL = 'ssh://git@stash.mgcorp.co:7999/lt/dep
         ]
     )
     def yaml = readYaml file: "${args.projprod}/deployconfig.conf"
-    emails = yaml.${args.environment}.notify
+    env.emails = yaml.(args.environment).notify
 }
