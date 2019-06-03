@@ -2,12 +2,15 @@
 import java.text.SimpleDateFormat
 
 def call(Map args) {
+    wrap([$class: 'BuildUser']) {
+        def user = env.BUILD_USER_ID
+        }
     def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
     def emails = data?.get(env.ENVIRONMENT)."notifyemails"
     String stringEmails = emails.join(", ")
     def targets = data?.get(env.ENVIRONMENT)."targets"
     String stringTargets = targets.join("\n")
-    def productname = data?."productname"
+    def productname = data?.get("productname")
     def date = new Date()
     sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
     def curdate = sdf.format(date)
@@ -164,7 +167,7 @@ def call(Map args) {
                                                             <span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed Date:</strong> 2019-06-03 09:59:17</span>
                                                         </font>
                                                     </li>
-                                                    <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed By:</strong>${env.BUILD_USER}</span></font></li>
+                                                    <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Deployed By:</strong>${user}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Project Affected:</strong>${productname}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">Environment Affected:</strong> ${env.ENVIRONMENT}</span></font></li>
                                                     <li style="color: rgb(96, 96, 96);"><font color="#666666" face="Arial, Helvetica, sans-serif"><span style="font-size: 14px; color: rgb(96, 96, 96); line-height: 130%;"><strong style="color: rgb(96, 96, 96);">VCS Related:</strong> ${env.REPO} - [Branch or Tag] ${env.BRANCH}</span></font></li>
