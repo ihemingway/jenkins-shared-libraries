@@ -85,13 +85,13 @@ spec:
         }
         post {
             success {
-                notifyDevOps(
+                notifyUsers(
                     status: "Success!",
                     color: "7CFC00"
                 )
             }
             failure {
-                notifyDevOps(
+                notifyUsers(
                     status: "Failed!",
                     color: "FF0000"
                 )
