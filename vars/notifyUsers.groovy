@@ -19,9 +19,6 @@ def call(Map args) {
         )
 
     emailext(
-        body: """${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}:
-
-Check console output at ${env.BUILD_URL} to view the results.""",
         subject: "{$env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}!",
         to: "${stringEmails}",
         body: """
