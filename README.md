@@ -1,0 +1,1 @@
+These are shared libraries used for constructing Jenkinsfiles. They are pretty straightforward. Please see Jenkins shared library documentation for how to use.
