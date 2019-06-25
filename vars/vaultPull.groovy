@@ -7,7 +7,7 @@ def call(Map args) {
     } else {
         sh '''
             curl https://repository.mgcorp.co/artifactory/devops-misc/vault_1.0.2_linux_amd64.zip > /usr/sbin vault_1.0.2_linux_amd64.zip
-            unzip -d /usr/sbin vault_1.0.2_linux_amd64.zip
+            unzip vault_1.0.2_linux_amd64.zip -d /usr/sbin
         '''
     }
     sh '''
