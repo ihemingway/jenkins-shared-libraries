@@ -12,6 +12,7 @@ def call(Map args) {
     }
     result = sh(returnStdout: true, script:'''
         set -x
+        echo ${env.VAULT_TOKEN}
         vault login ${env.VAULT_TOKEN} > /dev/null 2>&1
         vault kv get -field=${args.key} secret/${args.path}
     ''')
