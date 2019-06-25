@@ -10,12 +10,14 @@ def call(Map args) {
     } else {
         echo "Vault binary found."
     }
-    result = sh(returnStdout: true, script:'''
+    sh '''
         set -x
         echo ${VAULT_TOKEN}
         vault login ${VAULT_TOKEN} > /dev/null 2>&1
+    '''
+    result = sh(returnStdout: true, script:'''
         vault kv get -field=${args.key} secret/${args.path}
-        echo "Pull return: ${?}"
     ''')
+    sh "Done."
     return result
 }
