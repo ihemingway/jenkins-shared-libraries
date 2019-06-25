@@ -6,7 +6,7 @@ def call(Map args) {
         echo "Vault binary found."
     } else {
         sh '''
-            wget https://repository.mgcorp.co/artifactory/devops-misc/vault_1.0.2_linux_amd64.zip
+            curl https://repository.mgcorp.co/artifactory/devops-misc/vault_1.0.2_linux_amd64.zip > /usr/sbin vault_1.0.2_linux_amd64.zip
             unzip -d /usr/sbin vault_1.0.2_linux_amd64.zip
         '''
     }
