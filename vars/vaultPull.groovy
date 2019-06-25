@@ -18,6 +18,6 @@ def call(Map args) {
     result = sh(returnStdout: true, script:'''
         vault kv get -field=${args.key} secret/${args.path}
     ''')
-    sh "Done."
+    println(result)
     return result
 }
