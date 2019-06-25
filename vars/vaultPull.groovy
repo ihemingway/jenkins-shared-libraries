@@ -10,10 +10,10 @@ def call(Map args) {
             unzip vault_1.0.2_linux_amd64.zip -d /usr/sbin
         '''
     }
-    sh '''
-        vault login ${VAULT_TOKEN} > /dev/null 2>&1
+    sh """
+        vault login ${args.vaulttoken} > /dev/null 2>&1
         echo "Vault login return: ${?}"
-    '''
+    """
     result = sh(returnStdout: true, script:"vault kv get -field=${args.key} secret/${args.path}")
     return result
 }
