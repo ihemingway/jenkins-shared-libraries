@@ -2,9 +2,14 @@
 
 
 def call(Map args) {
-    def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
-    def emails = data?.get(env.ENVIRONMENT)."notifyemails"
-    String stringEmails = emails.join(", ")
+    // def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
+    // def emails = data?.get(env.ENVIRONMENT)."notifyemails"
+    // String stringEmails = emails.join(", ")
+    def environment = env.ENVIRONMENT ?: "N/A"
+    def branch = env.BRANCH ?: env.GIT_BRANCH
+    def codeurl = env.CODE_URL ?: env.GIT_URL
+    def email = "ian.hemingway@mindgeek.com"
+
     office365ConnectorSend (
         color: "${args.color}",
         message: "${args.status} Branch/Tag: ${env.BRANCH} :: Environment: ${env.ENVIRONMENT} :: Repo: ${env.CODE_URL}",
@@ -17,6 +22,6 @@ def call(Map args) {
 
 Check console output at ${env.BUILD_URL} to view the results.""",
         subject: "{$env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Done!",
-        to: "${stringEmails}"
+        to: "${email}"
         )
 }
