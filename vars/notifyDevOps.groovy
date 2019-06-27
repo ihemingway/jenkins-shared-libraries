@@ -21,7 +21,7 @@ def call(Map args) {
         body: """${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - DONE: ${args.status}
 
 Check console output at ${env.BUILD_URL} to view the logs.""",
-        subject: "{$env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}",
+        subject: "[JENKINS] ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${args.status}",
         to: "${email}"
         )
 }
