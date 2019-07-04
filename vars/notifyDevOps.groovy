@@ -8,7 +8,7 @@ def call(Map args) {
     def environment = env.ENVIRONMENT ?: "N/A"
     def branch = env.BRANCH ?: env.GIT_BRANCH
     def codeurl = env.CODE_URL ?: env.GIT_URL
-    def email = args.email ?: "devops@mindgeek.com"
+    def email = args.email ?: "ian.hemingway@mindgeek.com"
     def extrainfo = args.extrainfo ?: ""
     def sendemail = args.sendemail ?: true
 
