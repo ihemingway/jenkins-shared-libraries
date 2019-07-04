@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 
-def call(Map args, sendemail = true) {
+def call(Map args) {
     /* def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
     def emails = data?.get(env.ENVIRONMENT)."notifyemails"
     String stringEmails = emails.join(", ") */
@@ -10,6 +10,7 @@ def call(Map args, sendemail = true) {
     def codeurl = env.CODE_URL ?: env.GIT_URL
     def email = args.email ?: "devops@mindgeek.com"
     def extrainfo = args.extrainfo ?: ""
+    def sendemail = args.sendemail ?: true
 
     office365ConnectorSend (
         color: "${args.color}",
