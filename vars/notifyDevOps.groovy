@@ -10,7 +10,7 @@ def call(Map args) {
     def codeurl = env.CODE_URL ?: env.GIT_URL
     def email = args.email ?: "ian.hemingway@mindgeek.com"
     def extrainfo = args.extrainfo ?: ""
-    boolean sendemail = args.sendemail //?: true
+    def sendemail = args.sendemail ?: false
 
     office365ConnectorSend (
         color: "${args.color}",
