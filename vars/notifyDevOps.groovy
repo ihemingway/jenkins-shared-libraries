@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 
-def call(Map args, String sendemail = true) {
+def call(Map args) {
     /* def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
     def emails = data?.get(env.ENVIRONMENT)."notifyemails"
     String stringEmails = emails.join(", ") */
