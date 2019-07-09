@@ -2,7 +2,6 @@
 
 
 def call(Map args) {
-    sh 'echo $PWD'
     checkout(
         [$class: 'GitSCM',
         branches: [[name: "${env.BRANCH}"]],
