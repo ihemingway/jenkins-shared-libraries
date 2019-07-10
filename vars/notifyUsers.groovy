@@ -2,7 +2,7 @@
 import java.text.SimpleDateFormat
 
 def call(Map args) {
-    def data = readYaml file: "/home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
+    def data = readYaml file: "${env.WORKSPACE}/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"
     def emails = data?.get(env.ENVIRONMENT)."notifyemails"
     String stringEmails = emails.join(", ")
     def targets = data?.get(env.ENVIRONMENT)."targets"

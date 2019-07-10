@@ -38,8 +38,8 @@ spec:
             PROJPROD = "${PROJECT}.${PRODUCT}" //and this
             VAULT_TOKEN = "${PROJPROD}_vault_token"
             CODE_URL = "${args.repo}"
-            CODE_WS = "/home/jenkins/${PRODUCT}"
-            MANIFESTS_WS = "/home/jenkins/deployment-manifests"
+            CODE_WS = "${env.WORKSPACE}/${PRODUCT}"
+            MANIFESTS_WS = "${env.WORKSPACE}/deployment-manifests"
         }
         stages {
             stage("Set up environment") {

@@ -3,6 +3,6 @@
 
 def call(Map args) {
     sh (
-        """cd /home/jenkins && PYTHONIOENCODING=utf8 mgpackage -c /home/jenkins/deployment-manifests/${env.PROJPROD}/deployconfig.yaml -e "${env.ENVIRONMENT}" -d"""
+        """cd ${env.WORKSPACE} && PYTHONIOENCODING=utf8 mgpackage -c ${env.WORKSPACE}/deployment-manifests/${env.PROJPROD}/deployconfig.yaml -e "${env.ENVIRONMENT}" -d"""
     )
 }
