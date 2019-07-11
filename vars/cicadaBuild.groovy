@@ -8,12 +8,8 @@ cicadaBuild(
 */
 
 def call(Map args) {
-    //def debug = args.debug ?: false
     def flag = ""
-    /*if(debug) {
-        flag = "-d"
-    }*/
-    if (args.?debug == true) {
+    if (args?.debug == true) {
         flag = "-d"
     }
     sh (
