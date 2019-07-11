@@ -1,10 +1,10 @@
 #!/usr/bin/env groovy
 
 /*
-
-Usage:
-cicadaDeploy()
-
+Usage: -> parameters optional
+cicadaDeploy(
+    debug: <true|false>
+)
 */
 
 def call(Map args) {

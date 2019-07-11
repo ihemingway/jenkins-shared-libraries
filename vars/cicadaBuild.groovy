@@ -1,8 +1,9 @@
 #!/usr/bin/env groovy
 
 /*
-Usage:
-cicadaBuild()
+Usage: -> parameters optional
+cicadaBuild(
+    debug: <true|false>
 )
 */
 
