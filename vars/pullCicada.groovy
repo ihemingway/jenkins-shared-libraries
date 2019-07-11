@@ -1,5 +1,13 @@
 #!/usr/bin/env groovy
 
+/*
+Usage: -> parameter optional
+
+pullCicada(
+    cicadaurl: "<URL>"
+)
+
+*/
 
 def call(String cicadaurl = 'https://stash.mgcorp.co/scm/lt/cicada.git') {
     checkout(

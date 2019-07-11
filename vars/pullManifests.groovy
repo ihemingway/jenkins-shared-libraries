@@ -1,5 +1,13 @@
 #!/usr/bin/env groovy
 
+/*
+Usage: -> parameter optional
+
+pullManifests(
+    manifestsurl: "<git repo url>"
+)
+
+*/
 
 def call(String manifestsurl = 'ssh://git@stash.mgcorp.co:7999/lt/deployment-manifests.git') {
     checkout(

@@ -1,4 +1,16 @@
 #!/usr/bin/env groovy
+
+/*
+
+Usage: -> parameters required
+
+notifyUsers(
+    status: "Success!",
+    color: "7CFC00"
+)
+
+*/
+
 import java.text.SimpleDateFormat
 
 def call(Map args) {

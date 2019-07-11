@@ -1,5 +1,11 @@
 #!/usr/bin/env groovy
 
+/*
+
+Usage:
+cicadaDeploy()
+
+*/
 
 def call(Map args) {
     withCredentials([string(credentialsId: env.VAULT_TOKEN, variable: 'VAULT_TOKEN')]) {

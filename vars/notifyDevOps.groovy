@@ -1,5 +1,12 @@
 #!/usr/bin/env groovy
 
+/*
+Usage:
+notifyDevOps(
+    status: "Success!",
+    color: "7CFC00"
+)
+*/
 
 def call(Map args) {
     /* def data = readYaml file: "${env.WORKSPACE}/deployment-manifests/${env.PROJPROD}/deployconfig.yaml"

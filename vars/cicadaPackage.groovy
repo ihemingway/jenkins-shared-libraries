@@ -1,5 +1,11 @@
 #!/usr/bin/env groovy
 
+/*
+Usage:
+
+cicadaPackage()
+
+*/
 
 def call(Map args) {
     sh (
