@@ -13,7 +13,7 @@ def call(Map args) {
     /*if(debug) {
         flag = "-d"
     }*/
-    if (?.args.?debug == true) {
+    if (args.?debug == true) {
         flag = "-d"
     }
     sh (
