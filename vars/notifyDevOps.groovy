@@ -18,9 +18,6 @@ def call(Map args) {
     def email = args.email ?: "devops@mindgeek.com"
     def extrainfo = args.extrainfo ?: ""
     def sendemail = args.sendemail ?: false
-    // build blue ocean url
-    def buildURL = env.BUILD_URL
-    def newBuildURL = buildURL.replace("job/${env.JOB_NAME}", "blue/organizations/jenkins/${env.JOB_NAME}/detail/${env.JOB_NAME}")
 
     office365ConnectorSend (
         color: "${args.color}",
@@ -33,7 +30,7 @@ def call(Map args) {
         body: """${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - DONE: ${args.status}
 
 Check console output at ${env.BUILD_URL} to view the full logs.
-Blue Ocean: ${newBuildURL}
+Blue Ocean: ${env.RUN_DISPLAY_URL}
 
 ${extrainfo}
 """,
